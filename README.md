@@ -1,11 +1,9 @@
 # image-tagger
----
 **image-tagger** is a tool that analysis your local images files, generate tags(keywords) for the images, and automatically add those tags to your files on your MacOS, so that you can search your images by tags on your Mac. You don't need to upload your files to Web hosting services, it all happens on your local hard disks or even your external hard drivers.
 
 
 
 ## Preview
----
 This program will add tags to you image file:
 
 ![image](screenshot1.png)
@@ -18,7 +16,6 @@ Then you can search tags use Finder or Spotlight
 
 
 ## Getting Started
----
 
 First you need to get a free api key from [here](http://www.alchemyapi.com/api/register.html)
 
