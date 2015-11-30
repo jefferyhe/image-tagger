@@ -31,7 +31,7 @@ git clone https://github.com/jefferyhe/imageTagger.git
 cd src
 
 # Apply api key
-python main.py your-api-key
+python alchemyapi.py your-api-key
 
 # Begin rock n' roll
 python main.py "dragonfly.jpg"
@@ -39,5 +39,5 @@ python main.py "dragonfly.jpg"
 # The parameter could be a path of image file or a directory containing image files
 ```
 Currently only support jpg files, more file types support is comming!
- 
+
 
