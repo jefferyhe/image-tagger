@@ -25,6 +25,9 @@ def process(inputPath):
 
 
 def getValidFiles(inputPath):
+	'''
+	return a list of supported image file paths under given directory
+	'''
 	allFiles = []
 	if os.path.isfile(inputPath): 
 		if inputPath.lower().endswith(tuple(allowedFileTypes)):
@@ -41,6 +44,9 @@ def getValidFiles(inputPath):
 
 
 def getTags(imagePath):	
+	'''
+	return tags for given image file path
+	'''
 	tagList = []
 	response = alch.imageTagging('image', imagePath)
 	if response['status'] == 'OK':
@@ -72,8 +78,8 @@ def writeTags(F,TagList):
     OptionalTag = "com.apple.metadata:"
     XattrList = ["kMDItemFinderComment","_kMDItemUserTags","kMDItemOMUserTags"]
     for Field in XattrList:    
-        XattrCommand = 'xattr -w {0} \'{1}\' "{2}"'.format(OptionalTag + Field,TagText.encode("utf8"),F)
-        if DEBUG:
+    	XattrCommand = 'xattr -w {0} \'{1}\' "{2}"'.format(OptionalTag + Field,TagText.encode("utf8"),F)
+    	if DEBUG:
             sys.stderr.write("XATTR: {}\n".format(XattrCommand))
         ProcString = subprocess.check_output(XattrCommand, stderr=subprocess.STDOUT,shell=True) 
         Result += ProcString
