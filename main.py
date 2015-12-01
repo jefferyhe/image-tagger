@@ -8,10 +8,6 @@ from os.path import join
 from alchemyapi import AlchemyAPI
 
 
-#path = '/Users/jeffery/Pictures/for_phone/animal/*.jpg'
-#imagePath = 'dragonfly.jpg'
-# imagePath = '/Volumes/My Passport/photos/2015/2015-10-16/DSC_6927.NEF'
-
 alch = AlchemyAPI()
 inputPath = ''
 allowedFileTypes = ['jpg', 'jpeg']
