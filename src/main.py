@@ -1,30 +1,63 @@
+import os
 import sys
 import subprocess
 import json
 import glob
 
+from os.path import join
 from alchemyapi import AlchemyAPI
 
 
 alch = AlchemyAPI()
 inputPath = ''
+allowedFileTypes = ['jpg', 'jpeg']
+
 DEBUG = False
 
-def getTags(imagePath):	
-	response = alch.imageTagging('image', imagePath)
-	if response['status'] == 'OK':
-		print('## Response Object ##')
-		print(json.dumps(response, indent=4))
-		tagList = []
-		for tags in response['imageKeywords']:
-			tagList.append(tags['text'])
-			print (tags['text'])
-		
-		writeTags(imagePath, tagList)
-		
-	else:
-		print('Error in image tagging call: ', response['statusInfo'])
-	return
+def process(inputPath):
+    filesToBeProcessed = getValidFiles(inputPath)
+    print(str(len(filesToBeProcessed)) + ' files are ready to be processed!!!')
+    for fname in filesToBeProcessed:
+        tagList = getTags(fname)
+        print('Writing tags:' + str(tagList) + ' to:')
+        print(fname + '\n')
+        writeTags(fname, tagList)
+
+
+def getValidFiles(inputPath):
+    '''
+    return a list of supported image file paths under given directory
+    '''
+    allFiles = []
+    if os.path.isfile(inputPath): 
+        if inputPath.lower().endswith(tuple(allowedFileTypes)):
+            allFiles.append(inputPath)
+        else:
+            print('Unsupported file type! Currently only support file types in: ' + str(allowedFileTypes))
+    else:
+        inputPath = os.path.abspath(inputPath)
+        for root, dirs, files in os.walk(inputPath):
+            for fname in files:
+                if fname.lower().endswith(tuple(allowedFileTypes)):
+                    allFiles.append(join(root, fname))  
+    return allFiles
+
+
+def getTags(imagePath): 
+    '''
+    return tags for given image file path
+    '''
+    tagList = []
+    response = alch.imageTagging('image', imagePath)
+    if response['status'] == 'OK':
+        #print('## Response Object ##')
+        #print(json.dumps(response, indent=4))
+        for tags in response['imageKeywords']:
+            tagList.append(tags['text'])
+
+    else:
+        print('Error in image tagging call: ', response['statusInfo'])
+    return tagList
 
 
 def writeTags(F,TagList):
@@ -52,14 +85,7 @@ def writeTags(F,TagList):
         Result += ProcString
     return Result
 
-def process(path):
-	if path.endswith('.jpg'):
-		getTags(path)		
-	else:
-		path += "/*.jpg"
-		print (path)
-		for fname in glob.glob(path):
-			getTags(fname)
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
@@ -67,6 +93,5 @@ if __name__ == "__main__":
     else:
         inputPath = sys.argv[1]
         process(inputPath)
-
 
 
