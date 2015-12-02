@@ -1,5 +1,5 @@
 # image-tagger
-**image-tagger** is a tool that analysis your local images files, generate tags(keywords) for the images, and automatically add those tags to your files on your MacOS, so that you can search your images by tags on your Mac. You don't need to upload your files to Web hosting services, it all happens on your local hard disks or even your external hard drivers.
+**image-tagger** is a tool that analysis your local image files, generate tags(keywords) for the images, and automatically add those tags to your files on your MacOS, so that you can search your images by tags on your Mac. You don't need to upload your files to Web hosting services, it all happens on your local hard disks or even your external hard drivers.
 
 ***Currently only support MacOS***
 
