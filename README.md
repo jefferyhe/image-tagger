@@ -1,5 +1,5 @@
 # image-tagger
-**image-tagger** is a tool that analysis your local image files, generate tags(keywords) for the images, and automatically add those tags to your files on your MacOS, so that you can search your images by tags on your Mac. You don't need to upload your files to Web hosting services, it all happens on your local hard disks or even your external hard drivers.
+**image-tagger** is a tool that analyzes your local image files, generates tags(keywords), and automatically adds those tags to your image files, so that you can search your images by tags on your computer. You don't need to upload your files to Web hosting services, it all happens on your local hard disks or even your external hard drives.
 
 ***Currently only support MacOS***
 
@@ -36,7 +36,8 @@ python alchemyapi.py your-api-key
 (replace your-api-key to the one your received from your email)
 
 # Begin rock n' roll
-python main.py "dragonfly.jpg"
+python main.py dragonfly.jpg
+or python main.py /user/jeffery/Pictures
 
 # The parameter could be a path of image file or a directory containing image files
 ```
