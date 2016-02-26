@@ -35,7 +35,7 @@ cd src
 python alchemyapi.py your-api-key
 (replace your-api-key to the one your received from your email)
 
-# Begin rock n' roll
+# Time to rock n' roll
 python main.py dragonfly.jpg
 or python main.py /user/jeffery/Pictures
 
