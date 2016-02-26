@@ -41,6 +41,5 @@ or python main.py /user/jeffery/Pictures
 
 # The parameter could be a path of image file or a directory containing image files
 ```
-Currently only support jpg files, more file types support is comming!
 
 
